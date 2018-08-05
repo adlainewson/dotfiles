@@ -220,8 +220,8 @@ mode "pass-through" {
 }
 bindsym $mod+t mode "pass-through"
 
-## Start i3bar to display a workspace bar (plus the system information i3status
-## finds out, if available)
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
 #bar {
 #	position top
 #        status_command i3status
@@ -229,6 +229,8 @@ bindsym $mod+t mode "pass-through"
 #        # now working :
 #        #bindsym --release button3 exec --no-startup-id scrot -s ~/screenshot.png 
 #}
+# Alternatively, use polybar
+exec_always --no-startup-id ~/.i3/polybar.sh &
 
 # Popups for fullscreen windows
 popup_during_fullscreen smart
@@ -248,7 +250,6 @@ for_window [class="Pamac-updater" instance="pamac-updater" title="Updates"] floa
 
 
 
-exec_always --no-startup-id ~/.i3/polybar.sh &
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id blueman-applet 
 exec --no-startup-id nm-applet

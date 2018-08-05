@@ -30,8 +30,9 @@ filetype plugin indent on
 inoremap # X#
 set formatoptions=1
 set lbr
-" Mapping Ctrl-Backspace as Ctrl-W (doesn't work in terminal :()
-imap <C-BS> <C-W>
+"" Mapping Ctrl-Backspace as Ctrl-W (doesn't work in terminal :()
+"imap <C-BS> <C-W>
+
 " This maps Ctrl-a to select all; but it conflicts with increment number
 " nmap <C-a> ggVG<CR>
 set showbreak=\ \ \ \ \ ... 
@@ -40,7 +41,7 @@ highlight Normal ctermbg=black
 set mousemodel=popup
 " Search highlighting:
 set hlsearch
-nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <CR> :nohlsearch<CR>
 " colorscheme zellner
 " colorscheme jellybeans
 "Material theme
@@ -56,10 +57,15 @@ set splitright
 "" Search highlighting:
 "highlight Search cterm=NONE ctermfg=white ctermbg=DarkBlue 
 
-" Temp file saving
+" Misc
 nnoremap zz :update<cr>
+nnoremap zo zz:!overleaf_pushmain<cr>
+" Temp file saving
 vnoremap zs :w! tmp.do<cr>
 vnoremap zj :w! tmp.jl<cr>
+" Python save & execute section
+vnoremap zp :w! tmp.py<cr>:!python tmp.py<cr>
+
 
 " Remap split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -68,10 +74,34 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Visual navigation
+vnoremap k gk
+vnoremap j gj
+vnoremap 0 g0
+vnoremap $ g$
+vnoremap ^ g^
 nnoremap k gk
 nnoremap j gj
 nnoremap 0 g0
 nnoremap $ g$
 nnoremap ^ g^
 
+" Other navigation buttons; not sure if this conflicts with split navigation
+nnoremap <C-j> }z.
+nnoremap <C-k> {z.
+vnoremap <C-j> }
+vnoremap <C-k> {
+
+" Blinking highlights
+" Damian Conway's Die Blinkënmatchen: highlight matches
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
+
+function! HLNext (blinktime)
+  let target_pat = '\c\%#'.@/
+  let ring = matchadd('ErrorMsg', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction
 

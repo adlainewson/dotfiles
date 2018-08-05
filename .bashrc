@@ -8,6 +8,8 @@
 PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \w]\$ \[$(tput sgr0)\]"
 #PS1='[\u @ \h \W]$ '
 
+export TERM=xterm-256color
+
 colors() {
 	local fgc bgc vals seq0
 
