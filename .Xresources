@@ -1,0 +1,45 @@
+!*background:   [97]#282a36
+*background:   #282a36
+*foreground:   #eff0eb
+*cursorColor:  #9aedfe
+
+*color0:      #33303b
+*color8:      #4f4b58
+*color1:      #ff5c57
+*color9:      #ff5c57
+*color2:      #5af78e
+*color10:     #5af78e
+*color3:      #f3f99d
+*color11:     #f3f99d
+*color4:      #57c7ff
+*color12:     #57c7ff
+*color5:      #ff6ac1
+*color13:     #ff6ac1
+*color6:      #9aedfe
+*color14:     #9aedfe
+*color7:      #eff0eb
+*color15:     #eff0eb
+
+URxvt.scrollBar: false
+URxvt.font: xft:PragmataPro:size=9
+URxvt.geometry: 100x50
+URxvt.perl-ext-common: selection-to-clipboard
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+! Use extended color scheme
+rofi.color-enabled:                  true
+! Color scheme for normal row
+rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #1B2B34
+! Color scheme for urgent row
+rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
+! Color scheme for active row
+rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
+! Color scheme window
+rofi.color-window:                   argb:ee222222,  #FAC863 ,  #FAC863
+! Separator style (none, dash, solid)
+rofi.separator-style:                solid
+! Font
+rofi.font: PragmataPro 9
