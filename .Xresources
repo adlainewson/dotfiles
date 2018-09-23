@@ -43,3 +43,13 @@ rofi.color-window:                   argb:ee222222,  #FAC863 ,  #FAC863
 rofi.separator-style:                solid
 ! Font
 rofi.font: PragmataPro 9
+
+
+! Fonts {{{
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+!Xft.dpi:       160
+Xft.dpi:       96
+! }}}

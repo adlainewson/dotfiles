@@ -60,11 +60,17 @@ set splitright
 " Misc
 nnoremap zz :update<cr>
 nnoremap zo zz:!overleaf_pushmain<cr>
+" Compile latex file main.tex
+nnoremap zl :!pdflatex main.tex<cr>
 " Temp file saving
 vnoremap zs :w! tmp.do<cr>
 vnoremap zj :w! tmp.jl<cr>
 " Python save & execute section
 vnoremap zp :w! tmp.py<cr>:!python tmp.py<cr>
+" Compile latex file (if it's called main.tex)
+" Copy and paste
+vnoremap zP "+P
+vnoremap zC "+y
 
 
 " Remap split navigation
