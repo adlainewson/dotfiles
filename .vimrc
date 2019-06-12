@@ -9,7 +9,12 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " au BufRead,BufNewFile *.jl set filetype=julia
+set guioptions-=m  "Remove menubar
 set guioptions-=T  "Remove toolbar
+set guioptions-=r  "Remove scrollbar
+if (has("gui_running"))
+   set guifont=PragmataPro
+endif
 set expandtab "Expand tabs into spaces
 " Stop highlighting red in fortran tabs
 hi link fortranTab NONE 

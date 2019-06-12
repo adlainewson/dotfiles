@@ -10,6 +10,9 @@ PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[
 
 export TERM=xterm-256color
 export BROWSER=/usr/local/bin/chrome
+export STEAM_FRAME_FORCE_CLOSE=1
+export BC_ENV_ARGS=/home/adlai/.bc
+
 
 
 [[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
@@ -30,6 +33,10 @@ alias cd..='cd ..'
 alias mc='mc -S solarized'
 alias tmus='tmux'
 alias ope='rifle'
+alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
+alias status='systemctl status'
+alias tar_create='tar -cvzf'
+
 #alias steam='STEAM_RUNTIME=0 steam'
 #alias gephi='LIBGL_ALWAYS_INDIRECT=1 /usr/bin/gephi'
 

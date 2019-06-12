@@ -1,352 +1,274 @@
-[colors]
-background = #222
-foreground = #eee
-linecolor = #fba922
-bordercolor = #333
-accent = #ff3399
-bad = #e60053
-good = #079C5C
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   Modified By Aditya Shakya.
+;
+;==========================================================
 
-[settings]
-screenchange-reload = true
+[color]
 
-[global/wm]
-margin-top = 0
-margin-bottom = 0
+trans = #00000000
+white = #FFFFFF
+black = #000000
 
-[bar/top]
-enable-ipc = true
-monitor = ${env:MONITOR:eDP1}
-width = 50%
-height = 18
-;radius = 5.0
+bg = #1F1F1F
+fg = #FFFFFF
+fg-alt = #A9ABB0
+
+;acolor = #8e24aa
+acolor = #993366
+curgent = #e53935
+coccupied = #1e88e5
+
+## Material Colors
+
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-gray = #546e7a
+
+;==========================================================
+
+[bar/main]
+;monitor = LVDS1
+width = 100%
+height = 1.6% 
+offset-x = 2%
+offset-y = 2%
+bottom = false
 fixed-center = false
-override-redirect = true
-offset-x = 25%
+line-size = 2
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${color.bg}
+foreground = ${color.fg}
 
-line-color = ${colors.linecolor}
-underline-size = 1
-overline-size = 2
+border-size = 3
+border-color = ${color.bg}
 
-;border-size = 1
-;border-color = 0
-;border-bottom-size = 0
-border-bottom-size = 1
-border-bottom-color = ${colors.bordercolor}
-
-padding-left = 0
-padding-right = 0
-module-margin-left = 0
+module-margin-left = 1
 module-margin-right = 1
 
-font-0 = PragmataPro:pixelsize=9;2
-;font-0 = dina:pixelsize=9;2
-font-1 = siji:pixelsize=9;2
-font-2 = unifont:size=6;2
+;==========================================================
 
-modules-left = i3 date 
-#modules-left = i3 date xwindow
-;modules-center = mpd
-modules-center = 
-modules-right = battery cpu memory xbacklight alsa wifi  
+;font-0 = "Fantasque Sans Mono:pixelsize=12;2"
+font-0 = "PragmataPro:pixelsize=10;2"
+font-1 = "Material Icons:size=13;4"
 
-tray-position = right
-tray-padding = 4
-tray-maxsize = 16
-;tray-transparent = true
-tray-detached = false
-;tray-offset-x = 50
+;==========================================================
 
-;wm-restack = bspwm
-wm-restack = i3
+cursor-click = pointer
+;cursor-scroll = ns-resize
 
-;dim-value = 0.2
+;tray-position = right
+;tray-padding = 0
+;tray-maxsize = 16
 
-;click-left =
-;click-middle =
-;click-right =
-;scroll-up = bspwm-deskprev
-;scroll-down = bspwm-desknext
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-;double-click-left = notify-send -u low doubleclick
-;double-click-right = notify-send -u low doubleclick2
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
-# bar/module specific vars
-;bspwm-focused-overline = ${colors.linecolor}
-;bspwm-focused-underline = #cc333333
+;== Module Location ========================================================
 
-[module/github]
-type = internal/github
-token = ${file:/home/jaagr/.git-token}
+modules-left = workspaces 
+modules-right = volume battery network date powermenu
+;modules-left = arch workspaces term files browser settings
+;modules-right = mpd pkg volume battery network date powermenu
+ 
+;== Modules ========================================================
 
-;empty-notifications = true
+[module/arch]
+type = custom/text
+content = 
+;alt-icon = 
+content-padding = 2
+content-background = ${color.acolor}
+content-foreground = ${color.fg}
+click-left = rmenu_g
+click-middle = rfull
+click-right = rmenu_wi_g
 
-label = %{A1:web --new-window https\://github.com/notifications&:}%notifications%%{A}
-label-padding = 2
-label-background = #f0c209
-label-foreground = #000
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+format-padding = 0
 
-[module/fs-root]
-type = internal/fs
-mount-0 = /
-label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+;icon-4 = 5;
+icon-default = 
 
-[module/i3]
-type = internal/i3
-index-sort = true
-pin-workspaces = true
-wrapping-scroll = true
-;reverse-scroll = false
-;enable-scroll = false
+format = <label-state>
+label-active = %icon%
+label-occupied = %icon%
+label-urgent = %icon%
+label-empty = %icon%
 
-format = <label-state> <label-mode>
-
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = ${colors.accent}
-
-label-focused = %index%
-label-focused-background = #383838
-label-focused-foreground = #fff
-label-focused-padding = 2
-
-label-unfocused = %index%
-label-unfocused-padding = 2
-
-label-urgent = %index%!
+label-occupied-padding = 2
+label-empty-padding = 2
 label-urgent-padding = 2
+label-active-padding = 2
 
-label-visible = %index%
-label-visible-padding = 2
+label-active-foreground = ${color.acolor}
+label-urgent-foreground = ${color.curgent}
+label-empty-foreground = ${color.fg}
+label-occupied-foreground = ${color.coccupied}
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = cpu|%percentage%
-format-prefix = " "
-format-prefix-foreground = #666
+;label-active-underline = ${color.acolor}
+;label-urgent-underline = ${color.curgent}
+;label-occupied-underline = ${color.coccupied}
 
-[module/memory]
-type = internal/memory
-interval = 2
-label = mem|%percentage_used%
-format-prefix = " "
-format-prefix-foreground = #666
+[module/term]
+type = custom/text
+content = 
+content-foreground = ${color.fg-alt}
+click-left = termite &
+click-middle = urxvt &
+click-right = xfce4-terminal &
 
-[module/wifi]
-type = internal/network
-interface = wlp58s0
-interval = 3.0
-format-disconnected-foreground = ${colors.bad}
-format-disconnected = wifi down
-;format-connected =  <ramp-signal> <label-connected>
-format-connected =  <label-connected>
-;format-connected-prefix = "up"
-;format-connected-prefix-foreground = #666
-;format-connected-prefix-offset = -6
-label-connected-foreground = ${colors.foreground}
-label-connected = %{F#079C5C}wifi@%signal%%%{F-} %downspeed:8%
+[module/files]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${color.fg-alt}
+click-left = thunar &
+click-right = ranger &
 
+[module/browser]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${color.fg-alt}
+click-left = hrome &
 
-;format-disconnected = <label-disconnected>
-;format-disconnected-prefix = " "
-;format-disconnected-prefix-foreground = #666
-label-disconnected = not connected
-label-disconnected-foreground = #660000
+;[module/settings]
+;type = custom/text
+;content = 
+;content-padding = 1
+;content-foreground = ${color.fg-alt}
+;click-left = xfce4-settings &
+;click-right = lxappearance &
 
-[module/wired]
-type = internal/network
-interface = net0
-interval = 3.0
-
-format-connected-prefix = " "
-format-connected-prefix-foreground = #666
-label-connected = %local_ip%
-
-
-[module/date]
-type = internal/date
-;label = %{F#666}%{F-} %date%  %{F#e60053}%{F-} %time%
-;date = %Y-%m-%d
-label = %time%, %date% 
-;time = %Hh %Mm %Ss
-time = %H:%M:%S
-;date = %mm%dd
-date = %a %d %b
-interval = 1
-
-[module/xbacklight]
-type = internal/xbacklight
-label = %percentage%
-format = xb|<label> 
-;;format = xbl <ramp> <label> 
-;ramp-0 = 🌕
-;ramp-1 = 🌔
-;ramp-2 = 🌓
-;ramp-3 = 🌒
-;ramp-4 = 🌑
-;ramp-foreground = #666
-label-foreground = ${root.foreground}
-
-[module/alsa]
-type = internal/alsa
-
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-
-;speaker-mixer = Speaker
-;headphone-mixer = Headphone
-;headphone-id = 9
-
-;format-volume = <ramp-volume> <label-volume>
-format-volume = <label-volume>
-label-volume = vol|%percentage%
-label-volume-foreground = ${root.foreground}
-
-;format-muted-prefix = " "
-;format-muted-foreground = #777
-format-muted-foreground = ${colors.accent}
-label-muted = sound muted
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-time-format = %Hh%Mm
-
-format-charging = <label-charging>
-label-charging = ++b|%percentage% (%consumption%-%time%)
-
-format-discharging = <label-discharging>
-label-discharging = --b|%percentage% (%time%)
-
-format-full-foreground = ${colors.accent}
-format-full = <label-full>
-label-full = full
-
-;[module/battery-multi]
-;type = custom/script
-;exec = "count=$(acpi -b | wc -l); sum=$(acpi -b | egrep -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%'); echo $(date +%s) Avg capacity: $(( sum / count ))%"
-;exec-if = pgrep -x watch
-;interval = 3
+;==========================================================
 
 [module/mpd]
 type = internal/mpd
+;format-online = <toggle> <label-song> 
+format-online =  <label-song> 
 
-;format-online = <label-time>  <bar-progress>  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>
-format-online = <label-time> %{F#88}|%{F-} <label-song> <icon-prev><icon-stop><toggle><icon-next> <icon-repeat><icon-random>
-format-online-spacing = 0
-format-online-background = #ee333333
-format-online-underline = #cc333333
-format-online-padding = 3
+icon-play = 
+icon-pause = 
 
-format-offline = <label-offline>
-format-offline-foreground = #777
-
-label-offline = mpd is off
-
-label-song-maxlen = 45
+label-song-maxlen = 25
 label-song-ellipsis = true
 
-label-time-foreground = #777
+;==========================================================
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+;[module/pkg]
+;type = custom/script
+;exec = updates.sh
+;;exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+;;label = %{A1:termite -e "aurman -Syyu" & disown:} %{A3:termite -e "aurman -Syyu" & disown:}%output%%{A} %{A}
+;tail = true
 
-icon-random = 
-icon-repeat = 
+[module/battery]
+type = internal/battery
+full-at = 99
+time-format = %H:%M
+battery = BAT0
+adapter = AC
+format-charging = <animation-charging> <label-charging>
+;label-charging = %percentage%% (%time%)
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+;label-discharging = %percentage%% (%time%)
+label-discharging = %percentage%%
+format-full = <label-full>
 
-toggle-on-foreground = ${colors.accent}
-toggle-off-foreground = #777
+format-full-prefix = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
-;bar-progress-width = 10
-;bar-progress-indicator = 
-;bar-progress-indicator-foreground = #bb
-;bar-progress-fill = ─
-;bar-progress-fill-foreground = #bb
-;bar-progress-fill-font = 3
-;bar-progress-empty = ─
-;bar-progress-empty-foreground = #44
-;bar-progress-empty-font = 3
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-foreground   = ${color.fg}
+bar-capacity-width = 10
 
-[module/power-menu]
-type = custom/menu
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
 
-label-open = 
-label-close = 
-label-separator = /
-label-separator-margin = 1
+animation-charging-framerate = 750
 
-menu-0-0 = Terminate WM
-menu-0-0-foreground = ${colors.accent}
-menu-0-0-exec = bspc quit -1
-menu-0-1 = Reboot
-menu-0-1-foreground = ${colors.accent}
-menu-0-1-exec = menu-open-1
-menu-0-2 = Power off
-menu-0-2-foreground = ${colors.accent}
-menu-0-2-exec = menu-open-2
-menu-0-3 = Lock
-menu-0-3-foreground = ${colors.accent}
-menu-0-3-exec = lockscreen
+[module/volume]
+type = internal/alsa
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+format-muted-prefix = " "
+label-muted = MUTE
 
-menu-1-0 = Cancel
-menu-1-0-foreground = ${colors.accent}
-menu-1-0-exec = menu-open-0
-menu-1-1 = Reboot
-menu-1-1-foreground = ${colors.accent}
-menu-1-1-exec = sudo reboot
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
 
-menu-2-0 = Power off
-menu-2-0-foreground = ${colors.accent}
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = ${colors.accent}
-menu-2-1-exec = menu-open-0
+[module/network]
+type = custom/script
+;exec = /home/adlai/.config/polybar/check-network
+click-left = networkmanager_dmenu &
+click-right = networkmanager_dmenu &
+tail = true
 
-[module/app-menu]
-type = custom/menu
-label-open = 
-label-close = 
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+time =  %H:%M %p
+time-alt =  %Y-%m-%d
 
-menu-0-0 = Vimperator
-menu-0-0-exec = web
-menu-0-1 = Termite
-menu-0-1-exec = termite
-menu-0-2 = Pcmanfm
-menu-0-2-exec = pcmanfm
+[module/powermenu]
+type = custom/text
+content = 
+content-padding = 2
+content-background = ${color.acolor}
+content-foreground = ${color.fg}
+click-left = pmenu_g
+click-right = pmenu_g
 
-[module/xkeyboard]
-type = internal/xkeyboard
-
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = #666
-
-label-layout = %layout%
-
-label-indicator-padding = 2
-label-indicator-background = ${colors.accent}
-
-[module/xwindow]
-type = internal/xwindow
-format = | <label>
-;label-foreground = ${colors.accent}
-label-maxlen = 35
-
-[module/counter]
-type = internal/counter
-format = <counter>
-interval = 0.1
-
-; vim:ft=dosini
+;== EOF ========================================================
