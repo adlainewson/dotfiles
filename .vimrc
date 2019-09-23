@@ -6,8 +6,11 @@ endif
 call plug#begin('~/.vim/vimplug')
 Plug 'kaicataldo/material.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
+" This disables Esc-codes. One such code begins Esc-O, which slows down the O command
+set noesckeys
 " au BufRead,BufNewFile *.jl set filetype=julia
 set guioptions-=m  "Remove menubar
 set guioptions-=T  "Remove toolbar
@@ -62,6 +65,10 @@ set splitright
 "" Search highlighting:
 "highlight Search cterm=NONE ctermfg=white ctermbg=DarkBlue 
 
+" Save file with sudo
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command Wq :execute ':silent w !sudo tee % > /dev/null' | :edit! | :q
+
 " Misc
 nnoremap zz :update<cr>
 nnoremap zo zz:!overleaf_pushmain<cr>
@@ -76,6 +83,10 @@ vnoremap zp :w! tmp.py<cr>:!python tmp.py<cr>
 " Copy and paste
 vnoremap zP "+P
 vnoremap zC "+y
+
+
+" Disable comment continuation for all filetypes
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 " Remap split navigation
@@ -101,6 +112,18 @@ nnoremap <C-j> }z.
 nnoremap <C-k> {z.
 vnoremap <C-j> }
 vnoremap <C-k> {
+
+" Determine if we're in a python virtualenv
+"    probably best to disable this unless actively developing in python
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 
 " Blinking highlights
 " Damian Conway's Die Blinkënmatchen: highlight matches

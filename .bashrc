@@ -24,8 +24,10 @@ PATH=$PATH:/home/adlai/bin:/home/adlai/usr/local/bin:/home/adlai/usr/bin
 export PATH
 
 # Aliases
+alias grep='grep --ignore-case --color'
 alias lsd='ls -1 -d */'
 alias ls='ls -1 -N --color=auto --group-directories-first'
+alias lss='ls -1 -N --color=never --group-directories-first'
 alias xflux='xflux -l 120'
 alias less='less -R'
 alias fuck='sudo $(history -p \!\!)' 
@@ -43,9 +45,6 @@ alias tar_create='tar -cvzf'
 # Input mode
 set -o vi
 
-# for ipython kernel:
-#MATLAB_EXECUTABLE=/home/adlai/linux/MATLAB/bin/matlab
-MATLAB_EXECUTABLE=/usr/local/bin/matlab
 
 # Nice little function to wrap xclip
 cb() {
