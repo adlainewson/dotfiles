@@ -126,12 +126,35 @@ bindkey -v
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+<<<<<<< HEAD
 
 source $HOME/.aliases
 
 # Shell functions 
 fuck() {
    sudo $(history -1 | cut -d' ' -f 3-)
+=======
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+source $HOME/.aliases
+#alias grep='grep --ignore-case --color'
+#alias lsd='ls -1 -d */'
+#alias ls='ls -1 -N --color=auto --group-directories-first'
+#alias lss='ls -1 -N --color=never --group-directories-first'
+#alias xflux='xflux -l 120'
+#alias less='less -R'
+#alias cd..='cd ..'
+#alias mc='mc -S solarized'
+#alias tmus='tmux'
+#alias ope='rifle'
+#alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
+#alias status='systemctl status'
+#alias tar_create='tar -cvzf'
+
+fuck() {
+   sudo $(history -1 | cut -d' ' -f 4-)
+>>>>>>> 54da8093f50fb03c6303962dcf88a43689eb055f
 }
 
 cb() {
@@ -204,3 +227,7 @@ compinit
 
 # Fish-like syntax highlighting. Has to be at the end.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54da8093f50fb03c6303962dcf88a43689eb055f

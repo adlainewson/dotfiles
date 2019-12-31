@@ -25,23 +25,6 @@ export PATH
 
 # Aliases
 source $HOME/.aliases
-#alias grep='grep --ignore-case --color'
-#alias lsd='ls -1 -d */'
-#alias ls='ls -1 -N --color=auto --group-directories-first'
-#alias lss='ls -1 -N --color=never --group-directories-first'
-#alias xflux='xflux -l 120'
-#alias less='less -R'
-#alias fuck='sudo $(history -p \!\!)' 
-#alias cd..='cd ..'
-#alias mc='mc -S solarized'
-#alias tmus='tmux'
-#alias ope='rifle'
-#alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
-#alias status='systemctl status'
-#alias tar_create='tar -cvzf'
-
-#alias steam='STEAM_RUNTIME=0 steam'
-#alias gephi='LIBGL_ALWAYS_INDIRECT=1 /usr/bin/gephi'
 
 # Input mode
 set -o vi

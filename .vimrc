@@ -132,6 +132,18 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 
+" Determine if we're in a python virtualenv
+"    probably best to disable this unless actively developing in python
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+
 " Blinking highlights
 " Damian Conway's Die Blinkënmatchen: highlight matches
 nnoremap <silent> n n:call HLNext(0.1)<cr>

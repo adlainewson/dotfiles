@@ -13,6 +13,7 @@ function ask {
 
 declare -A dfiles
 dfiles[i3]="i3/config $HOME/.config/i3/config"
+dfiles[i3]=".zshrc $HOME/.zshrc"
 dfiles[polybar]="polybar/config $HOME/.config/polybar/config"
 dfiles[ranger_rc]="ranger/rc.conf $HOME/.config/ranger/rc.conf"
 dfiles[ranger_rifle]="ranger/rifle.conf $HOME/.config/ranger/rifle.conf"
