@@ -10,7 +10,10 @@
 
 
 # Shrink borders, for compatilibility with gaps (Adlai)
-for_window [class="^.*"] border pixel 2
+#for_window [class="^.*"] border pixel 2
+#set title_format %title
+#title_align left
+#border_style normal
 workspace_layout tabbed
 
 # Set colors
@@ -19,7 +22,8 @@ set $FOCUS #993366
 set $UNFOCUS #3c3b37
 set $TXT #ffffff
 
-client.focused 			 $FOCUS   $FOCUS   $FOCUS    $FOCUS
+#client.focused 			 $FOCUS   $FOCUS   $TXT      $FOCUS
+client.focused 	         $FOCUS   $FOCUS   $FOCUS    $FOCUS
 client.focused_inactive          $UNFOCUS $UNFOCUS $UNFOCUS  $UNFOCUS
 client.unfocused 		 $UNFOCUS $UNFOCUS $UNFOCUS  $UNFOCUS
 client.urgent 			 $FOCUS   $FOCUS   $FOCUS    $FOCUS
@@ -265,15 +269,19 @@ for_window [class="Pamac-updater" instance="pamac-updater" title="Updates"] floa
 for_window [class="qjoypad" instance="qjoypad"]  floating enable
 for_window [class="Google Play Music Desktop Player" instance="google play music desktop player" title="Settings"] floating enable
 for_window [class="Lutris" instance="lutris" title="Lutris"] floating enable
+for_window  [class="Steam" instance="Steam"] floating enable
 
 
+#exec --no-startup-id /usr/local/bin/laptop
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id libinput-gestures
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id blueman-applet 
+#exec --no-startup-id blueman-applet 
+exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
 exec --no-startup-id fluxgui
 exec --no-startup-id pa-applet
 exec --no-startup-id pamac-tray
+exec --no-startup-id keynav
 
