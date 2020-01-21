@@ -24,6 +24,7 @@ dfiles[tmux]=".tmux.conf $HOME/.tmux.conf"
 dfiles[vim]=".vimrc  $HOME/.vimrc"
 dfiles[Xresources]=".Xresources $HOME/.Xresources"
 dfiles[termite]="termite/config $HOME/.config/termite/config"
+dfiles[rofi]="rofi/config.rasi $HOME/.config/rofi/config.rasi"
 
 echo "Checking for file differences..."
 
