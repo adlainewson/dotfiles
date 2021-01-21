@@ -17,8 +17,14 @@
 workspace_layout tabbed
 
 # Set colors
+## light grey
 #set $FOCUS #989898
-set $FOCUS #993366
+## a lovely magenta
+#set $FOCUS #993366
+## a sea green
+#set $FOCUS #2c828a
+## a sea-ier green
+set $FOCUS #237d6e
 set $UNFOCUS #3c3b37
 set $TXT #ffffff
 
@@ -96,6 +102,9 @@ bindsym $mod+c exec rofi -dpi 1 -show window
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Sticky windows
+bindsym $mod+| sticky toggle
 
 # change focus
 bindsym $mod+$left focus left
@@ -269,19 +278,25 @@ for_window [class="Pamac-updater" instance="pamac-updater" title="Updates"] floa
 for_window [class="qjoypad" instance="qjoypad"]  floating enable
 for_window [class="Google Play Music Desktop Player" instance="google play music desktop player" title="Settings"] floating enable
 for_window [class="Lutris" instance="lutris" title="Lutris"] floating enable
-for_window  [class="Steam" instance="Steam"] floating enable
+for_window [class="Steam" instance="Steam"] floating enable
+for_window [class="Vkeybd.tcl" instance="vkeybd.tcl"] floating enable
+for_window [class="QjackCtl" instance="qjackctl" ] floating enable
+for_window [class="steam" instance="steam" title="Steam Controller Configurator"] floating enable
 
 
-#exec --no-startup-id /usr/local/bin/laptop
+
+exec --no-startup-id /usr/local/bin/laptop
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id libinput-gestures
 exec --no-startup-id nitrogen --restore
-#exec --no-startup-id blueman-applet 
-exec --no-startup-id blueberry-tray
+#exec --no-startup-id feh --bg-fill /home/adlai/dropbox/pictures/wallpaper/other_artists/Gunnlaugur\ Scheving\ Hauling\ the\ Shark\ Aboard.jpg
+exec --no-startup-id blueman-applet 
+#exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
 exec --no-startup-id fluxgui
-exec --no-startup-id pa-applet
-exec --no-startup-id pamac-tray
+exec --no-startup-id pia-client
+#exec --no-startup-id pamac-tray
 exec --no-startup-id keynav
+exec --no-startup-id pasystray
 
