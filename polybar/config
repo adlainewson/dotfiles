@@ -31,6 +31,7 @@ alert = #bd2c40
 width = 100%
 radius = 6.0
 fixed-center = false
+height = 60
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -48,12 +49,14 @@ module-margin-left = 1
 module-margin-right = 1
 
 ;font-0 = "Fantasque Sans Mono:pixelsize=10;3"
-font-0 = "PragmataPro:pixelsize=10;3"
-font-1 = "Material\-Design\-Iconic\-Font:size=10;2"
+font-0 = "PragmataPro:pixelsize=12;3"
+font-1 = "Material\-Design\-Iconic\-Font:size=12;2"
 
 ;font-0 = fixed:pixelsize=10;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=10;1
+;dpi = -1
+dpi = 192
 
 modules-left = i3 
 modules-center = 
@@ -62,6 +65,7 @@ modules-right = battery playerctl network cpu memory date
 
 tray-position = right
 tray-padding = 2
+tray-maxsize = 50
 
 ;[bar/example]
 ;;monitor = ${env:MONITOR:HDMI-1}
