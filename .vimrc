@@ -3,12 +3,26 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-""""""" Vim-plug for vim plugin installs
-call plug#begin('~/.vim/vimplug')
-Plug 'kaicataldo/material.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'JuliaEditorSupport/julia-vim'
-call plug#end()
+"" VIM-PLUG
+" Check for existing install of vim-plug, install if not found
+  if empty(glob('~/.vim/autoload/plug.vim'))
+     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+
+  " Run PlugInstall if there are missing plugins
+  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+    \| endif
+
+  " Run PlugInstall if there are missing plugins
+  call plug#begin('~/.vim/vimplug')
+      Plug 'kaicataldo/material.vim'
+      Plug 'vim-airline/vim-airline'
+      Plug 'JuliaEditorSupport/julia-vim'
+  call plug#end()
+" end of VIM-PLUG
+
 
 " This disables Esc-codes. One such code begins Esc-O, which slows down the O command
 set noesckeys
@@ -53,12 +67,13 @@ set hlsearch
 nnoremap <CR> :nohlsearch<CR>
 " colorscheme zellner
 " colorscheme jellybeans
+"colorscheme evening
 
 "Material theme
 ""let g:material_theme_style = 'default' | 'palenight' | 'dark'
-colorscheme material
-let g:material_theme_style = 'dark'
-set background=dark
+"colorscheme material
+"let g:material_theme_style = 'dark'
+"set background=dark
 
 " Split options
 set splitbelow
@@ -80,12 +95,11 @@ nnoremap zl :!pdflatex main.tex<cr>
 vnoremap zs :w! tmp.do<cr>
 vnoremap zj :w! tmp.jl<cr>
 " Python save & execute section
-vnoremap zp :w! tmp.py<cr>:!python tmp.py<cr>
+"vnoremap zp :w! tmp.py<cr>:!python tmp.py<cr>
 " Compile latex file (if it's called main.tex)
 " Copy and paste
-vnoremap zP "+P
-vnoremap zC "+y
-
+vnoremap zp "+P
+vnoremap zc :'<,'>w !xclip -selection c<cr><cr>
 
 " Disable comment continuation for all filetypes
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -119,30 +133,6 @@ vnoremap K {
 nnoremap <C-j> J
 "vnoremap <C-j> }
 "vnoremap <C-k> {
-
-" Determine if we're in a python virtualenv
-"    probably best to disable this unless actively developing in python
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-
-" Determine if we're in a python virtualenv
-"    probably best to disable this unless actively developing in python
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
-
 
 " Blinking highlights
 " Damian Conway's Die Blinkënmatchen: highlight matches
