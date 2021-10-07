@@ -1,19 +1,21 @@
 #!/bin/bash
 
 function ask {
-   echo "Difference found when checking $1 files: would you like to see?"
-   echo "Y/n:"
+   echo "difference found when checking config for $1: "
+   echo "> [diff/accept/skip]?"
    read ANS
-   if [ "$ANS" == "y" ] || [ "$ANS" == "yes" ] || [ "$ANS" == "Y" ]; then
-      vimdiff $2 $3
-   else
-      echo "OK, skipping"
+   if [ $( echo $ANS | grep -E '^[Dd]' ) ]; then
+      vimdiff $2 $3 2>/dev/null
+   elif [ $( echo $ANS | grep -E '^[Aa]' ) ]; then
+      cp $3 ./$2
+      echo ">copied $3 > $2"
+   elif [ $( echo $ANS | grep -E '^[Ss]' ) ]; then
+      echo ">skipping"
    fi
 }
 
 declare -A dfiles
 dfiles[i3]="i3/config $HOME/.config/i3/config"
-dfiles[i3]=".zshrc $HOME/.zshrc"
 dfiles[polybar]="polybar/config $HOME/.config/polybar/config"
 dfiles[ranger_rc]="ranger/rc.conf $HOME/.config/ranger/rc.conf"
 dfiles[ranger_rifle]="ranger/rifle.conf $HOME/.config/ranger/rifle.conf"
@@ -26,7 +28,7 @@ dfiles[Xresources]=".Xresources $HOME/.Xresources"
 dfiles[termite]="termite/config $HOME/.config/termite/config"
 dfiles[rofi]="rofi/config.rasi $HOME/.config/rofi/config.rasi"
 
-echo "Checking for file differences..."
+echo "checking for file differences..."
 
 for i in "${!dfiles[@]}"; do
    DIFF=$( diff ${dfiles[$i]} )
@@ -35,4 +37,4 @@ for i in "${!dfiles[@]}"; do
    fi
 done
 
-echo "All done!"
+echo "done"
