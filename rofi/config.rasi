@@ -53,7 +53,8 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme: "glue_pro_blue";
+	theme: "gruvbox-dark-soft";
+/*	theme: "glue_pro_blue";*/
 	color-normal: "#2b303b, #c0c5ce, #2b303b, #8fa1b3, #2b303b";
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -143,3 +144,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"

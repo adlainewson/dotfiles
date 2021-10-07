@@ -1,3 +1,4 @@
+alias jc='journalctl'
 alias grep='grep --ignore-case --color'
 alias lsd='ls -1 -d */'
 alias ls='ls -1 -N --color=auto --group-directories-first'
@@ -11,3 +12,6 @@ alias ope='rifle'
 alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
 alias status='systemctl status'
 alias tar_create='tar -cvzf'
+alias r='ranger'
+alias sc='systemctl'
+

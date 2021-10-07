@@ -4,11 +4,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/adlai/.oh-my-zsh"
 export TERM=xterm-256color
-export BROWSER=/usr/local/bin/chrome
+#export BROWSER=/usr/local/bin/chrome
 export STEAM_FRAME_FORCE_CLOSE=1
 export BC_ENV_ARGS=/home/adlai/.bc
+## The nice sea-green used by i3 is #237d6e
 export LS_COLORS="$LS_COLORS:ow=1;34;43:"
+export EDITOR=vim
+export GITPAT=361f20b60e442fcb26e90a32428bacf428182eba
 
+# Stuff for git
+git config --global alias.s status
 
 MYBIN=/home/adlai/bin
 MYLOCALBIN=/home/adlai/usr/local/bin
@@ -24,6 +29,7 @@ setopt COMPLETE_ALIASES
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+#ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -126,35 +132,34 @@ bindkey -v
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-<<<<<<< HEAD
 
 source $HOME/.aliases
 
 # Shell functions 
-fuck() {
-   sudo $(history -1 | cut -d' ' -f 3-)
-=======
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.aliases
-#alias grep='grep --ignore-case --color'
-#alias lsd='ls -1 -d */'
-#alias ls='ls -1 -N --color=auto --group-directories-first'
-#alias lss='ls -1 -N --color=never --group-directories-first'
-#alias xflux='xflux -l 120'
-#alias less='less -R'
-#alias cd..='cd ..'
-#alias mc='mc -S solarized'
-#alias tmus='tmux'
-#alias ope='rifle'
-#alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
-#alias status='systemctl status'
-#alias tar_create='tar -cvzf'
+
+
+timer() {
+   # Count down script that accepts same arguments as sleep (eg, 5s, 3m, 4h)
+   #   requires integer arguments. 
+   T=0
+   T_MAX=$( echo $1 | grep -Eo '^[0-9^.]+' )
+   T_TYPE=$( echo $1 | grep -o '[smhd]$' )
+   echo "Counting down $T_MAX$T_TYPE"
+   # Convert h to m
+   if [ "$T_TYPE" = "h" ]; then
+      T_TYPE="m"
+      T_MAX=$(( 60*$T_MAX ))
+   fi
+   while [ $T -le $T_MAX ]; do
+      echo -n $(( $T_MAX- $T ))$T_TYPE... 
+      T=$(( $T + 1 ))
+      sleep 1$T_TYPE;
+   done 
+   echo "\n Timer done."
+}
 
 fuck() {
-   sudo $(history -1 | cut -d' ' -f 4-)
->>>>>>> 54da8093f50fb03c6303962dcf88a43689eb055f
+   sudo $(history -1 | sed -E 's/^[[:space:]]*[0-9]+\*?[[:space:]]*//') 
 }
 
 cb() {
@@ -227,7 +232,3 @@ compinit
 
 # Fish-like syntax highlighting. Has to be at the end.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-<<<<<<< HEAD
-=======
-
->>>>>>> 54da8093f50fb03c6303962dcf88a43689eb055f

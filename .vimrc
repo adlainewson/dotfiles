@@ -23,7 +23,6 @@ endif
   call plug#end()
 " end of VIM-PLUG
 
-
 " This disables Esc-codes. One such code begins Esc-O, which slows down the O command
 set noesckeys
 " au BufRead,BufNewFile *.jl set filetype=julia
@@ -40,7 +39,9 @@ set shiftwidth=3
 if has("gui_running")
   " GUI is running or is about to start.              
   set lines=43 columns=75
-  colorscheme evening
+  "colorscheme evening
+  colorscheme gruvbox
+  let g:airline_theme='gruvbox'
 endif
 set history=1000
 set undolevels=1000
@@ -48,8 +49,8 @@ set wildmode=list:longest
 syntax on
 set autoindent
 filetype plugin indent on
-   " smartindent not used anymore. See http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867 and this 'feature': http://stackoverflow.com/questions/2063175/comments-go-to-start-of-line-in-the-insert-mode-in-vim
-   " set smartindent 
+"" smartindent not used anymore. See http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867 and this 'feature': http://stackoverflow.com/questions/2063175/comments-go-to-start-of-line-in-the-insert-mode-in-vim
+" set smartindent 
 inoremap # X#
 set formatoptions=1
 set lbr
@@ -68,6 +69,9 @@ nnoremap <CR> :nohlsearch<CR>
 " colorscheme zellner
 " colorscheme jellybeans
 "colorscheme evening
+"" gruvbox available here: https://vimcolorschemes.com/morhetz/gruvbox
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 
 "Material theme
 ""let g:material_theme_style = 'default' | 'palenight' | 'dark'
@@ -99,7 +103,9 @@ vnoremap zj :w! tmp.jl<cr>
 " Compile latex file (if it's called main.tex)
 " Copy and paste
 vnoremap zp "+P
-vnoremap zc :'<,'>w !xclip -selection c<cr><cr>
+"vnoremap zc :'<,'>w !xclip -selection c<cr><cr>
+"vnoremap zc :w !xclip -selection cli<cr>
+vnoremap zc "+y
 
 " Disable comment continuation for all filetypes
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

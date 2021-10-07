@@ -10,7 +10,8 @@
 
    #background      = rgba(24, 24, 24, .98)
    #background = rgba(63, 63, 63, 0.98)
-   background      = #282a36
+   #background      = #282a36
+   background      = #2F2A25
    geometry = 840x480
 
 

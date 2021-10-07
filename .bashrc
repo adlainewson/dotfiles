@@ -9,7 +9,7 @@ PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[
 #PS1='[\u @ \h \W]$ '
 
 export TERM=xterm-256color
-export BROWSER=/usr/local/bin/chrome
+export BROWSER=/usr/bin/google-chrome-stable
 export STEAM_FRAME_FORCE_CLOSE=1
 export BC_ENV_ARGS=/home/adlai/.bc
 
