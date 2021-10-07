@@ -10,7 +10,7 @@ export BC_ENV_ARGS=/home/adlai/.bc
 ## The nice sea-green used by i3 is #237d6e
 export LS_COLORS="$LS_COLORS:ow=1;34;43:"
 export EDITOR=vim
-export GITPAT=361f20b60e442fcb26e90a32428bacf428182eba
+export GITPAT=$( cat $HOME/.gitpat )
 
 # Stuff for git
 git config --global alias.s status
