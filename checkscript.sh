@@ -55,5 +55,5 @@ fi
 if [[ $( echo $PUSH | grep -E '^[Yy]' ) ]]; then
    git add -A .
    git commit -am "Update scripts"
-   git push
+   git push https://$(cat ~/.gitpat)@github.com/adlainewson/dotfiles.git
 fi
