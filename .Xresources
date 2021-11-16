@@ -4,7 +4,7 @@
 ! special
 *.foreground: #c0c5ce
 *.background: #2b303b
-*.cursorColor: #c0c5ce
+!*.cursorColor: #c0c5ce
 
 *.color0: #2b303b
 *.color1: #bf616a
@@ -100,6 +100,7 @@ Xft.hintstyle: hintfull
 ! ------------------------------------------------------------------------------
 ! DPI
 ! ------------------------------------------------------------------------------
-Xft.dpi:       244
+!Xft.dpi:       244
 !Xft.dpi:       96
+Xft.dpi:       244
 Xcursor.size: 50

@@ -14,4 +14,4 @@ alias status='systemctl status'
 alias tar_create='tar -cvzf'
 alias r='ranger'
 alias sc='systemctl'
-
+alias pdflatex='pdflatex -interaction nonstopmode'
