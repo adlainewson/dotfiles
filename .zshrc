@@ -184,7 +184,15 @@ cb() {
       echo "       echo <string> | cb"
     else
       # Copy input to clipboard
-      echo -n "$input" | xclip -selection c
+      # Check if running on Wayland
+      if [[ $( echo $XDG_SESSION_TYPE | grep 'x11' ) ]]; then
+         echo -n "$input" | xclip -selection c
+      elif [[ $( echo $XDG_SESSION_TYPE | grep 'wayland' ) ]]; then
+         echo -n "$input" | wl-copy 
+      else
+         echo "Could not determine session. Trying to use wl-copy"
+         echo -n "$input" | wl-copy 
+      fi
       # Truncate text for status
       if [ ${#input} -gt 80 ]; then input="$(echo $input | cut -c1-80)$_trn_col...\e[0m"; fi
       # Print status.

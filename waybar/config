@@ -49,19 +49,19 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": "[CH] {capacity}% {icon}",
+        "format-charging": "⚡ {capacity}% {icon}",
         // "format-good": "", // An empty format will hide the module
         "format-full": "[FULL]",
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid}  ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
-        //"scroll-step": 1,
+        "scroll-step": 0.1,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-muted": "--  ",
