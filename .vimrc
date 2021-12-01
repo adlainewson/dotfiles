@@ -30,6 +30,8 @@
 " ___) |  __/ |_| |_| | | | | (_| \__ \
 "|____/ \___|\__|\__|_|_| |_|\__, |___/
 "                            |___/     
+" Spelling language
+set spell spelllang=en_us
 " This disables Esc-codes. One such code begins Esc-O, which slows down the O command
 set noesckeys
 " au BufRead,BufNewFile *.jl set filetype=julia
@@ -83,6 +85,15 @@ au VimEnter * if &diff | execute 'windo set wrap' | endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+"" This is for highlighting spellcheck
+"augroup my_colours
+"  autocmd!
+"  autocmd ColorScheme gruvbox hi SpellBad cterm=reverse
+"augroup END
+
+" General highlighting; change guifg/guibg as desired, cterm is for being in a tty 
+"highlight Visual ctermbg=Blue ctermfg=NONE guibg=NONE guifg=NONE
 
 if has("gui_running")
   " GUI is running or is about to start.              
@@ -172,13 +183,12 @@ nnoremap <C-j> J
 "vnoremap <C-j> }
 "vnoremap <C-k> {
 
-"
-" __  __ _          
-"|  \/  (_)___  ___ 
-"| |\/| | / __|/ __|
-"| |  | | \__ \ (__ 
-"|_|  |_|_|___/\___|
-"                   
+"           _          
+" _ __ ___ (_)___  ___ 
+"| '_ ` _ \| / __|/ __|
+"| | | | | | \__ \ (__ 
+"|_| |_| |_|_|___/\___|
+"                      
 
 " Blinking highlights
 " Damian Conway's Die Blinkënmatchen: highlight matches

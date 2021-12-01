@@ -90,8 +90,8 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym $mod+XF86AudioPause exec playerctl next
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pactl get-default-sink) +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pactl get-default-sink) -5% #decrease sound volume
 #bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # start a terminal
@@ -333,7 +333,7 @@ exec mako --default-timeout=8000
 exec nm-applet --indicator
 #exec fluxgui
 #exec xflux -l -120
-exec wlsunset -s 21:30 -S 06:30
+exec wlsunset -s 21:30 -S 06:30 -l 49 -L 123
 #exec pia-client
 #exec pamac-tray
 #exec keynav
