@@ -5,6 +5,8 @@
 *.foreground: #c0c5ce
 *.background: #2b303b
 !*.cursorColor: #c0c5ce
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size: 50
 
 *.color0: #2b303b
 *.color1: #bf616a
@@ -100,7 +102,6 @@ Xft.hintstyle: hintfull
 ! ------------------------------------------------------------------------------
 ! DPI
 ! ------------------------------------------------------------------------------
-!Xft.dpi:       244
+Xft.dpi:        160
 !Xft.dpi:       96
-Xft.dpi:       244
-Xcursor.size: 50
+!Xft.dpi:       138

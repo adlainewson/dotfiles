@@ -8,6 +8,9 @@
 PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \w]\$ \[$(tput sgr0)\]"
 #PS1='[\u @ \h \W]$ '
 
+# Show if this is Ranger shell
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
 export TERM=xterm-256color
 export BROWSER=/usr/bin/google-chrome-stable
 export STEAM_FRAME_FORCE_CLOSE=1

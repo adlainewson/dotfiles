@@ -20,6 +20,7 @@
       Plug 'kaicataldo/material.vim'
       Plug 'vim-airline/vim-airline'
       Plug 'JuliaEditorSupport/julia-vim'
+      Plug 'sheerun/vim-polyglot'
   call plug#end()
 " end of VIM-PLUG
 
@@ -32,6 +33,7 @@
 "                            |___/     
 " Spelling language
 set spell spelllang=en_us
+set nospell
 " This disables Esc-codes. One such code begins Esc-O, which slows down the O command
 set noesckeys
 " au BufRead,BufNewFile *.jl set filetype=julia
@@ -148,7 +150,9 @@ vnoremap zp "+P
 "vnoremap zc :w !xclip -selection cli<cr>
 "" For wayland:
 "vnoremap zc :'<,'>w !wl-copy <cr><cr>
-vnoremap zc :'<,'>w !wl-copy <cr><cr>
+vnoremap zc :w !wl-copy <cr><cr>
+vnoremap zC "+y
+
 
 " Disable comment continuation for all filetypes
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

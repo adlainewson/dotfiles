@@ -15,6 +15,7 @@ window#waybar {
     background: rgba(35, 31, 32, 0.60);
 }
 
+
 #window {
     font-weight: bold;
     font-family: "PragmataPro";
@@ -37,6 +38,7 @@ window#waybar {
     /*border-top: 2px solid #c9545d;*/
 }
 
+
 #workspaces button.hover{
     color: red;
 }
@@ -52,11 +54,13 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #temperature, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
     padding: 0 3px;
     /*background: rgba(35, 31, 32, 0.90);*/
     background: 0 3px;
     margin: 0 2px;
+    box-shadow: 0 0px;
+    color:      rgba(217, 216, 216, 1);
 }
 
 #clock {
@@ -83,7 +87,7 @@ window#waybar {
 #battery.warning:not(.charging) {
     color: white;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;

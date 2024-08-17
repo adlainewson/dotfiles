@@ -5,12 +5,13 @@
 export ZSH="/home/adlai/.oh-my-zsh"
 export TERM=xterm-256color
 #export BROWSER=/usr/local/bin/chrome
-export STEAM_FRAME_FORCE_CLOSE=1
+#export STEAM_FRAME_FORCE_CLOSE=1
 export BC_ENV_ARGS=/home/adlai/.bc
 ## The nice sea-green used by i3 is #237d6e
 export LS_COLORS="$LS_COLORS:ow=1;34;43:"
 export EDITOR=vim
 export GITPAT=$( cat $HOME/.gitpat )
+export XDG_CURRENT_DESKTOP=gnome
 
 # Stuff for git
 git config --global alias.s status
@@ -20,9 +21,12 @@ MYLOCALBIN=/home/adlai/usr/local/bin
 PATH=$PATH:$MYBIN/applications:$MYBIN/display:$MYBIN/misc:$MYBIN/utilities:$MYBIN/webapps:$MYLOCALBIN:/home/adlai/usr/games/bin
 export PATH
 
-# autocomplete aliases
+# autocomplete aliases with full command
 setopt COMPLETE_ALIASES
+zstyle ':completion:*' completer _expand_alias _complete _ignored
 
+## Show a prompt if this is a ranger shell
+#if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -240,3 +244,4 @@ compinit
 
 # Fish-like syntax highlighting. Has to be at the end.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=$PATH:/home/adlai/.spicetify

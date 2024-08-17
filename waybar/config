@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["battery",  "network", "cpu", "memory",  "custom/media", "tray", "pulseaudio", "clock"],
+    "modules-right": ["battery",  "network", "cpu", "temperature", "memory",  "custom/media", "tray", "pulseaudio", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -38,6 +38,10 @@
     "cpu": {
         "format": " {usage}%"
     },
+    "temperature": {
+        "format": "🌡 {temperatureC}°C",
+        "thermal-zone": 6
+    },
     "memory": {
         "format": " {}%"
     },
@@ -45,8 +49,8 @@
         "bat": "BAT0",
         "states": {
             "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 20,
+            "critical": 10
         },
         "format": "{icon} {capacity}%",
         "format-charging": "⚡ {capacity}% {icon}",
@@ -61,7 +65,7 @@
         "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
-        "scroll-step": 0.1,
+        "scroll-step": 1,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-muted": "--  ",
@@ -76,8 +80,10 @@
         },
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous"
-        //"on-click": "pavucontrol"
+        "on-click-middle": "playerctl status"
+        //"on-click-middle": "/home/adlai/bin/utilities/music_osd"
+        //"on-click": "playerctl play-pause",
+        //"on-click-right": "playerctl next",
     },
     "custom/spotify": {
         "format": " {}",
