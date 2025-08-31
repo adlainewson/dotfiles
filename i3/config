@@ -20,11 +20,13 @@ workspace_layout tabbed
 ## light grey
 #set $FOCUS #989898
 ## a lovely magenta
-set $FOCUS #993366
+#set $FOCUS #993366
 ## a sea green
 #set $FOCUS #2c828a
 ## a sea-ier green
-#set $FOCUS #237d6e
+set $FOCUS #237d6e
+#Phtalo green
+#set $FOCUS #123524
 set $UNFOCUS #3c3b37
 set $TXT #ffffff
 
@@ -64,8 +66,16 @@ set $mod Mod1
 # for 1080 use values inner 5, outer 10
 set $default_gaps_outer 50
 set $default_gaps_inner 10
+set $default_gaps_outer 50
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
+
+### WS specific gaps
+#workspace 3 gaps inner 0
+#workspace 3 gaps outer 0
+##workspace 3 border pixel 2
+#workspace 3 border none 
+##for_window [class="^.*"] border pixel 2
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient

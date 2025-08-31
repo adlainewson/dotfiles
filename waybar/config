@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["battery",  "network", "cpu", "temperature", "memory",  "custom/media", "tray", "pulseaudio", "clock"],
+    "modules-right": ["battery",  "network", "cpu", "temperature", "custom/gpu-usage","memory", "tray", "pulseaudio", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -36,14 +36,14 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage}%"
+        "format": "cpu {usage}%"
     },
     "temperature": {
-        "format": "🌡 {temperatureC}°C",
-        "thermal-zone": 6
+        "format": "{temperatureC}°C",
+        "thermal-zone": 8
     },
     "memory": {
-        "format": " {}%"
+        "format": " ram {}%"
     },
     "battery": {
         "bat": "BAT0",
@@ -92,8 +92,14 @@
         "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
         "exec-if": "pgrep spotify"
     },
-    //"custom/media": {
-    //    "format": " {icon} ",
-    //    "format-icons": "▶️"
-    //}
+	  "custom/gpu-usage": {
+	    "format": " gpu {}",
+	    "exec": "gpu-usage-waybar",
+	    "return-type": "json",
+	    "format-icons": "",
+	  },
+    "custom/media": {
+        "format": " {icon} ",
+        "format-icons": "▶️"
+    },
 }

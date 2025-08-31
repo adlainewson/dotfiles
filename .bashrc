@@ -4,8 +4,9 @@
 
 [[ $- != *i* ]] && return
 
-#PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;129m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]](\w)\$ \[$(tput sgr0)\]"
-PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \w]\$ \[$(tput sgr0)\]"
+#PS1="${NEWLINE}%K{#2E3440}%F{#E5E9F0}$(date +%_I:%M%P) %K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k ❯ " # nord theme
+# Fallback
+#PS1="[\[$(tput bold)\]\u\[$(tput sgr0)\]@\[$(tput bold)\]\[$(tput setaf 5)\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\] \w]\$ \[$(tput sgr0)\]"
 #PS1='[\u @ \h \W]$ '
 
 # Show if this is Ranger shell

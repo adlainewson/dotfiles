@@ -1,17 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# This is to stop plugin 'z' from overriding PS1 variable with a precmd
+_Z_NO_PROMPT_COMMAND=true
+# This is a hatchet version of the above:
+precmd_functions=""
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/adlai/.oh-my-zsh"
 export TERM=xterm-256color
 #export BROWSER=/usr/local/bin/chrome
 #export STEAM_FRAME_FORCE_CLOSE=1
-export BC_ENV_ARGS=/home/adlai/.bc
+#export BC_ENV_ARGS=/home/adlai/.bc
 ## The nice sea-green used by i3 is #237d6e
 export LS_COLORS="$LS_COLORS:ow=1;34;43:"
 export EDITOR=vim
 export GITPAT=$( cat $HOME/.gitpat )
-export XDG_CURRENT_DESKTOP=gnome
 
 # Stuff for git
 git config --global alias.s status
@@ -26,13 +30,13 @@ setopt COMPLETE_ALIASES
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 
 ## Show a prompt if this is a ranger shell
-#if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell" # set by `omz`
 #ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
@@ -50,7 +54,6 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
-
 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -236,6 +239,13 @@ setopt BASH_AUTO_LIST
 
 # SUDO prompt colours
 export SUDO_PROMPT=$'\e[31m[sudo]\e[0m \e[1mpassword for %p:\e[0m '
+
+# set up prompt
+NEWLINE=$'\n'
+#PS1="${NEWLINE}%K{#2E3440}%F{#E5E9F0}$(date +%_I:%M%P) %K{#3b4252}%F{#ECEFF4} %n %K{#4c566a} %~ %f%k ❯ " # nord theme
+PS1="${NEWLINE}%K{#32302f}%F{#d5c4a1}$(date +%_I:%M%P) %K{#3c3836}%F{#d5c4a1} %n %K{#504945} %~ %f%k ❯ " # warmer theme
+# PS1="${NEWLINE}%K{$COL0}%F{$COL1}$(date +%_I:%M%P) %K{$COL0}%F{$COL2} %n %K{$COL3} %~ %f%k ❯ " # pywal colors, from postrun script
+
 
 autoload -Uz compinit
 compinit

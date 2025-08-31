@@ -36,6 +36,7 @@ dfiles[waybar3]="waybar/waybar.sh $HOME/.config/waybar/waybar.sh"
 dfiles[Xresources]=".Xresources $HOME/.Xresources"
 dfiles[termite]="termite/config $HOME/.config/termite/config"
 dfiles[rofi]="rofi/config.rasi $HOME/.config/rofi/config.rasi"
+dfiles[foot]="foot/foot.ini $HOME/.config/foot.ini"
 
 echo "checking for file differences..."
 

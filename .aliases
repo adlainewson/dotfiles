@@ -1,33 +1,38 @@
-alias jc='journalctl'
-alias grep='grep --ignore-case --color'
 alias lsd='ls -1 -d */'
 alias ls='ls -1 -N --color=auto --group-directories-first'
 alias lss='ls -1 -N --color=never --group-directories-first'
+alias lsmod-sort="lsmod | tr -s ' ' | cut -d ' ' -f 2,1 | column -t -O 2,1 | sort -h"
 alias xflux='xflux -l 120'
 alias less='less -R'
 alias cd..='cd ..'
 alias mc='mc -S solarized'
 alias tmus='tmux'
 alias ope='rifle'
-alias stea='STEAM_FRAME_FORCE_CLOSE=1 steam'
-alias status='systemctl status'
 alias tar_create='tar -cvzf'
 alias r='ranger'
+
+alias scs='systemctl status'
 alias sc='systemctl'
 alias scu='systemctl --user'
+alias scus='systemctl --user'
+
 alias pdflatex='pdflatex -interaction nonstopmode'
 alias mpv='mpv --cache=yes --force-window'
+
+alias grep='grep --ignore-case --color'
 alias pgrep='pgrep -fl'
 alias pkill='pkill -e'
-alias ys='yay -Ss'
+
+alias jc='journalctl'
 alias jcfk='journalctl -fk'
+alias jcf='journalctl -fn 200'
+
 alias bgd='bg && disown'
-alias scs='systemctl status'
-alias aup='aunpack'
 alias df='df -h'
 alias v='vim'
 alias edge='microsoft-edge-stable --enable-features=VaapiVideoDecoder'
 alias pingtime='ping yahoo.com | cut -d "=" -f4'
 alias hypr='Hyprland'
 alias psu="ps -U $USER| less -r"
-
+alias iotop="iotop -o"
+alias dmesg="journalctl -b0"

@@ -35,7 +35,7 @@
 set spell spelllang=en_us
 set nospell
 " This disables Esc-codes. One such code begins Esc-O, which slows down the O command
-set noesckeys
+"set noesckeys
 " au BufRead,BufNewFile *.jl set filetype=julia
 set expandtab "Expand tabs into spaces
 " Stop highlighting red in fortran tabs
@@ -150,8 +150,10 @@ vnoremap zp "+P
 "vnoremap zc :w !xclip -selection cli<cr>
 "" For wayland:
 "vnoremap zc :'<,'>w !wl-copy <cr><cr>
-vnoremap zc :w !wl-copy <cr><cr>
-vnoremap zC "+y
+"vnoremap zc :'<,'>w !wl-copy <cr><cr>
+
+vnoremap zc "+y
+
 
 
 " Disable comment continuation for all filetypes

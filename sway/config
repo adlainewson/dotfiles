@@ -1,12 +1,3 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
 
 # Include sway settings
 include /etc/sway/config.d/*
@@ -68,6 +59,13 @@ set $default_gaps_outer 50
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
+## WS specific gaps
+workspace 3 gaps inner 0
+workspace 3 gaps outer 0
+#workspace 3 border pixel 2
+#workspace 3 border none 
+#for_window [class="^.*"] border pixel 2
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -77,6 +75,9 @@ set $right l
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Setting this to test if it fixes waybar bug (it doesnt)
+#mouse_warping none
 
 ## Set brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
@@ -104,9 +105,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pactl get-default-sink
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec termite
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec foot
 # Gross!
-bindsym $mod+Shift+Return exec alacritty -t "Floating Termite"
+bindsym $mod+Shift+Return exec foot -T "Floating Foot"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -292,24 +294,45 @@ bindsym $mod+m mode "move"
 # Passthrough mode
 mode "pass-through" {
     bindsym $mod+t mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+t mode "pass-through"
 
-## Start i3bar to display a workspace bar (plus the system information i3status
-## finds out, if available)
-##bindsym $mod+y bar hidden_state toggle
-#bar {
-#        mode dock
-#	position top
-#        status_command i3status
-#        modifier none
-#        #status_command i3blocks
-#        # now working :
-#        #bindsym --release button3 exec scrot -s ~/screenshot.png 
+## dynamic window gaps? # doesnt work
+#bindsym $mod+g mode "nogaps"
+#set $zero 0
+#mode "nogaps" {
+#   gaps inner $zero 
+#   gaps outer $zero
 #}
-## Alternatively, use polybar
-# exec_always ~/.config/sway/polybar.sh &
-#exec killall waybar  
+
+## Swaybar emergency
+#bar {
+#  position top
+#  height 32
+#  # gaps 5
+#  font pango:B612, Terminus, TerminessTTF Nerd Font, Material Icons, Font Awesome 6 Free, Font Awesome 6 Brands
+#  strip_workspace_numbers yes
+#
+#  #status_command i3status-rs ~/.config/i3status-rust/config.toml
+#
+#  colors {
+#    #Sepia
+#    background #401e1b
+#    statusline #ece4da
+#    separator  #69848c
+#    focused_background #465459
+#    focused_statusline #f5eeef
+#    focused_separator  #657fbf
+#
+#    #                  border  bckgrnd text
+#    focused_workspace  #f2a81d #465459 #f2a81d
+#    active_workspace   #657fbf #465459 #657fbf
+#    inactive_workspace #8abeb7 #465459 #8abeb7
+#    urgent_workspace   #cc4539 #465459 #cc4539
+#  }
+#}
+
 exec_always $HOME/.config/waybar/waybar.sh
 
 
@@ -320,9 +343,10 @@ popup_during_fullscreen smart
 # Keep urgency hint for a bit
 force_display_urgency_hint 500 ms
 
-# Specific window properties
+## Specific window properties
 ## use user-script i3-get-window-criterea
 for_window [title="Floating Termite"] floating enable
+for_window [title="Floating Foot"] floating enable
 for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
 for_window [class="Viewnior" instance="viewnior"] floating enable
 for_window [class="Thunar" instance="Thunar"] floating enable
@@ -345,6 +369,7 @@ for_window [app_id="sc-controller" ] floating enable
 for_window [app_id="gamescope" ] floating enable
 
 
+exec_always kanshi
 ## For multiple monitors; now handled by kanshi
 # output DP-1 pos 0 0
 # output eDP1 pos 0 2160
@@ -365,6 +390,11 @@ input "1133:16490:Logitech_MX_Anywhere_2S" {
    pointer_accel -.5
 }
 
+# mx anywhere bluetooth (not working)
+input "bluetooth:046d:b01a" {
+   pointer_accel -.9
+}
+
 input "10462:4418:SCController_Mouse" {
    pointer_accel 0
    accel_profile flat
@@ -375,42 +405,25 @@ input * xkb_options compose:lwin
 
 
 output "*" bg $HOME/.config/sway/wallpaper.jpg fill
-#swaybg $HOME/usr/wallpaper
-#output eDPI-1 mode 3840x2400
-#output eDPI-1 mode 1980x1200
-#output eDPI-1 scale 2
-#exec xsettingsd
 
-#exec dunst -conf $HOME/.config/dunst/dunst.cfg
-#exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK # fix delayed start of GTK apps
-#exec systemctl --user import-environment #try me first
-#exec mako  # Old notification daemon
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &  ## for remembering passwords I think
-#exec feh --bg-fill /home/adlai/dropbox/pictures/wallpaper/other_artists/Gunnlaugur\ Scheving\ Hauling\ the\ Shark\ Aboard.jpg
-#exec blueberry-tray
-#exec blueman-applet
-#exec "killall nm-applet & nm-applet &"
-#exec fluxgui
-#exec xflux -l -120
-#exec wlsunset -s 21:30 -S 06:30 
-## Testing this:
-#exec vesktop --ozone-platform=x11 # still only runs in x11
-#exec pia-client
-#exec pamac-tray
-#exec keynav
-#exec pasystray
-#exec pa-applet
-#exec playerctld daemon
-#exec lig_startup 
-#exec media-control-indicator
-exec wl-paste -t text --watch clipman store --no-persist
-exec systemctl start --user mako.service
+output * {
+   allow_tearing yes
+   max_render_time off 
+   }
+for_window [all] allow_tearing yes
+
+# output eDPI-1 mode 3840x2400
+# output eDPI-1 mode 1980x1200
+# output eDPI-1 scale 2
+
+exec keynav
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ## Polkit for running applications with sudo in wayland
+exec wl-paste -t text --watch clipman store --no-persist 
+exec systemctl restart --user mako.service
 exec nm-applet --indicator
-exec kanshi  
-#exec gammastep -O 4500K
+#exec kanshi  
+exec --no-startup-id killall gammastep
+exec --no-startup-id gammastep -O 4500K
 #exec swayidle timeout 5400 "swayidle_check_playing" timeout 14400 "playerctl -a stop" timeout 14400 "swaymsg output * dpms off" resume "swaymsg output * dpms on"
 exec swayidle timeout 900 "swayidle_if" resume 'swaymsg "output * dpms on"'
 #exec swayidle timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-
-## set envs somewhere else
-#export XDG_CURRENT_DESKTOP=sway
